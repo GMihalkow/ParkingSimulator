@@ -4,14 +4,14 @@
 
     public class TiresController : MonoBehaviour
     {
-        [SerializeField] private Transform[] _tires;
+        [SerializeField] private Rigidbody[] _tires;
         [SerializeField] private float _rotationSpeed = 5f;
 
         private bool _isActivated;
         private float _angle;
         public bool isActivated { set => _isActivated = value; }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (!_isActivated) return;
 
@@ -22,7 +22,7 @@
           
             foreach (var tire in _tires)
             {
-                var rotation = Quaternion.AngleAxis(_angle, tire.right);
+                var rotation = Quaternion.AngleAxis(_angle, Vector3.right);
                 tire.rotation = rotation;
             }
 
