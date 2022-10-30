@@ -8,6 +8,8 @@ namespace ParkingSimultaor.Control
         [SerializeField] private float _maxSpeed = 5f;
         [SerializeField] private float _acceleration = 10f;
         [SerializeField] private float _rotationSpeed = 10f;
+        [SerializeField] private float _breakForce = 5f;
+        [SerializeField] private float _speedBreaksThreshold = 0.3f;
 
         private Rigidbody _rigidbody;
         private Vector3 _flatDirection;
@@ -22,28 +24,25 @@ namespace ParkingSimultaor.Control
         {
             _flatDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-            if (!Mathf.Approximately(_flatDirection.y, 0f))
-            {
-                var x = _flatDirection.x;
-                
-                if (_flatDirection.y < 0f)
-                {
-                    x *= -1f;
-                }
-                
-                _rigidbody.rotation *= Quaternion.AngleAxis(x * _rotationSpeed * Time.deltaTime, Vector3.up);
-            }
+            var forwardForce = Vector3.forward * _flatDirection.y * _acceleration * Time.deltaTime;
+            var localVelocity = transform.InverseTransformDirection(_rigidbody.velocity);
 
-            var velocity = Vector3.forward * _flatDirection.y * _acceleration * Time.deltaTime;
+            _rigidbody.AddRelativeForce(forwardForce, ForceMode.VelocityChange);
 
-            _rigidbody.AddRelativeForce(velocity, ForceMode.VelocityChange);
+            _rigidbody.AddRelativeForce(Vector3.right * -localVelocity.x * Mathf.Abs(_flatDirection.x), ForceMode.VelocityChange);
 
+            var localVelocityNormalized = localVelocity.normalized;
             var totalVelocityFraction = _rigidbody.velocity.magnitude / _maxSpeed;
 
             if (totalVelocityFraction > 1f)
             {
-                _rigidbody.AddRelativeForce(-velocity, ForceMode.VelocityChange);
+                _rigidbody.AddRelativeForce(-forwardForce, ForceMode.VelocityChange);
             }
+
+            if (_rigidbody.velocity.magnitude < _speedBreaksThreshold) return;
+
+            _rigidbody.AddRelativeForce(-localVelocityNormalized * Mathf.Clamp01(1f - Mathf.Abs(_flatDirection.y)) * _breakForce * Time.deltaTime, ForceMode.VelocityChange);
+            _rigidbody.rotation *= Quaternion.AngleAxis(_flatDirection.x * _rotationSpeed * Time.deltaTime * localVelocityNormalized.z, Vector3.up);
         }
 
         private void OnDrawGizmos()

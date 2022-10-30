@@ -1029,19 +1029,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4289291022717028, guid: 7ecf74b289b28f246bfea1ee3e275c26, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3723397
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4289291022717028, guid: 7ecf74b289b28f246bfea1ee3e275c26, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4289291022717028, guid: 7ecf74b289b28f246bfea1ee3e275c26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9280966
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4289291022717028, guid: 7ecf74b289b28f246bfea1ee3e275c26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4289291022717028, guid: 7ecf74b289b28f246bfea1ee3e275c26, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1049,7 +1049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4289291022717028, guid: 7ecf74b289b28f246bfea1ee3e275c26, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -136.28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4289291022717028, guid: 7ecf74b289b28f246bfea1ee3e275c26, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1150,8 +1150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tiresController: {fileID: 1873990915}
   _maxSpeed: 20
-  _acceleration: 25
-  _rotationSpeed: 50
+  _acceleration: 30
+  _rotationSpeed: 75
+  _breakForce: 40
 --- !u!54 &1873990918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1160,7 +1161,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873990910}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 1
   m_AngularDrag: 1
   m_UseGravity: 1
