@@ -14,27 +14,43 @@ namespace ParkingSimultaor.Control
 
         private void Awake()
         {
-            _flatDirection = new Vector3(1f, 0f, 1f);
             _tiresController.isActivated = true;
             _rigidbody = GetComponent<Rigidbody>();
         }
 
         private void FixedUpdate()
         {
-            var horizontalAxis = Input.GetAxis("Horizontal");
-            var verticalAxis = Input.GetAxis("Vertical");
+            _flatDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-            _rigidbody.AddRelativeForce(Vector3.forward * verticalAxis * _acceleration * Time.deltaTime, ForceMode.VelocityChange);
+            if (!Mathf.Approximately(_flatDirection.y, 0f))
+            {
+                var x = _flatDirection.x;
+                
+                if (_flatDirection.y < 0f)
+                {
+                    x *= -1f;
+                }
+                
+                _rigidbody.rotation *= Quaternion.AngleAxis(x * _rotationSpeed * Time.deltaTime, Vector3.up);
+            }
 
-            //_rigidbody.velocity = Vector3.ClampMagnitude(velocity, _maxSpeed);
+            var velocity = Vector3.forward * _flatDirection.y * _acceleration * Time.deltaTime;
 
-            //Debug.Log(_rigidbody.velocity.magnitude);
+            _rigidbody.AddRelativeForce(velocity, ForceMode.VelocityChange);
 
-            if (Mathf.Approximately(verticalAxis, 0f)) return;
+            var totalVelocityFraction = _rigidbody.velocity.magnitude / _maxSpeed;
 
-            //var dir = Quaternion.LookRotation(velocity, Vector3.up);
-            //_rigidbody.MoveRotation(Quaternion.AngleAxis(horizontalAxis, Vector3.up));
-            _rigidbody.rotation *= Quaternion.AngleAxis(horizontalAxis * _rotationSpeed * Time.deltaTime, Vector3.up);
+            if (totalVelocityFraction > 1f)
+            {
+                _rigidbody.AddRelativeForce(-velocity, ForceMode.VelocityChange);
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (_rigidbody == null) return;
+
+            Debug.DrawRay(_rigidbody.position, _rigidbody.velocity.normalized * 10f, Color.blue);
         }
     }
 }
