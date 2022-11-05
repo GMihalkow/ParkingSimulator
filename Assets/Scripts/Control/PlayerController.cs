@@ -4,52 +4,43 @@ namespace ParkingSimultaor.Control
 
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private TiresController _tiresController;
-        [SerializeField] private float _maxSpeed = 5f;
-        [SerializeField] private float _acceleration = 10f;
-        [SerializeField] private float _rotationSpeed = 10f;
-        [SerializeField] private float _breakForce = 5f;
-        [SerializeField] private float _speedBreaksThreshold = 0.3f;
+        [SerializeField] private float _maxTurnAngle = 30f;
+        [SerializeField] private float _acceleration = 20f;
+        [SerializeField] private WheelCollider _backLeftWheel;
+        [SerializeField] private WheelCollider _backRightWheel;
+        [SerializeField] private WheelCollider _frontLeftWheel;
+        [SerializeField] private WheelCollider _frontRightWheel;
+        [SerializeField] private Transform _backLeftTransform;
+        [SerializeField] private Transform _backRightTransform;
+        [SerializeField] private Transform _frontLeftTransform;
+        [SerializeField] private Transform _frontRightTransform;
 
-        private Rigidbody _rigidbody;
-        private Vector3 _flatDirection;
-
-        private void Awake()
-        {
-            _tiresController.isActivated = true;
-            _rigidbody = GetComponent<Rigidbody>();
-        }
+        private Vector2 _input;
 
         private void FixedUpdate()
         {
-            _flatDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            _input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-            var forwardForce = Vector3.forward * _flatDirection.y * _acceleration * Time.deltaTime;
-            var localVelocity = transform.InverseTransformDirection(_rigidbody.velocity);
+            var turnAngle = _maxTurnAngle * _input.x;
 
-            _rigidbody.AddRelativeForce(forwardForce, ForceMode.VelocityChange);
+            _frontLeftWheel.steerAngle = turnAngle;
+            _frontRightWheel.steerAngle = turnAngle;
+            
+            _frontLeftWheel.motorTorque = _input.y * _acceleration;
+            _frontRightWheel.motorTorque = _input.y * _acceleration;
 
-            _rigidbody.AddRelativeForce(Vector3.right * -localVelocity.x * Mathf.Abs(_flatDirection.x), ForceMode.VelocityChange);
-
-            var localVelocityNormalized = localVelocity.normalized;
-            var totalVelocityFraction = _rigidbody.velocity.magnitude / _maxSpeed;
-
-            if (totalVelocityFraction > 1f)
-            {
-                _rigidbody.AddRelativeForce(-forwardForce, ForceMode.VelocityChange);
-            }
-
-            if (_rigidbody.velocity.magnitude < _speedBreaksThreshold) return;
-
-            _rigidbody.AddRelativeForce(-localVelocityNormalized * Mathf.Clamp01(1f - Mathf.Abs(_flatDirection.y)) * _breakForce * Time.deltaTime, ForceMode.VelocityChange);
-            _rigidbody.rotation *= Quaternion.AngleAxis(_flatDirection.x * _rotationSpeed * Time.deltaTime * localVelocityNormalized.z, Vector3.up);
+            UpdateWheelPosition(_backLeftWheel, _backLeftTransform);
+            UpdateWheelPosition(_frontLeftWheel, _frontLeftTransform);
+            UpdateWheelPosition(_backRightWheel, _backRightTransform);
+            UpdateWheelPosition(_frontRightWheel, _frontRightTransform);
         }
 
-        private void OnDrawGizmos()
+        private void UpdateWheelPosition(WheelCollider wheel, Transform wheelTransform)
         {
-            if (_rigidbody == null) return;
+            wheel.GetWorldPose(out var pos, out var rot);
 
-            Debug.DrawRay(_rigidbody.position, _rigidbody.velocity.normalized * 10f, Color.blue);
+            wheelTransform.position = pos;
+            wheelTransform.rotation = rot;
         }
     }
 }
