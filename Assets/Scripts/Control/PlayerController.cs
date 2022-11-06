@@ -17,10 +17,10 @@ namespace ParkingSimultaor.Control
 
         private Vector2 _input;
 
+        private void Update() => _input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
         private void FixedUpdate()
         {
-            _input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
             var turnAngle = _maxTurnAngle * _input.x;
 
             _frontLeftWheel.steerAngle = turnAngle;
