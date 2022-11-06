@@ -5,7 +5,7 @@ namespace ParkingSimultaor.Control
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float _maxTurnAngle = 30f;
-        [SerializeField] private float _acceleration = 20f;
+        [SerializeField] private float _maxTorque = 20f;
         [SerializeField] private WheelCollider _backLeftWheel;
         [SerializeField] private WheelCollider _backRightWheel;
         [SerializeField] private WheelCollider _frontLeftWheel;
@@ -25,9 +25,9 @@ namespace ParkingSimultaor.Control
 
             _frontLeftWheel.steerAngle = turnAngle;
             _frontRightWheel.steerAngle = turnAngle;
-            
-            _frontLeftWheel.motorTorque = _input.y * _acceleration;
-            _frontRightWheel.motorTorque = _input.y * _acceleration;
+
+            _frontLeftWheel.motorTorque = _input.y * _maxTorque;
+            _frontRightWheel.motorTorque = _input.y * _maxTorque;
 
             UpdateWheelPosition(_backLeftWheel, _backLeftTransform);
             UpdateWheelPosition(_frontLeftWheel, _frontLeftTransform);
