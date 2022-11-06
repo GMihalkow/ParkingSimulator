@@ -22,9 +22,10 @@
             _xAngle += xInput * _rotationSpeed * Time.deltaTime;
 
             var yRot = Quaternion.AngleAxis(_xAngle, Vector3.up);
-            var direction = _target.position - _cachedTransform.position;
 
             _cachedTransform.position = _target.position + yRot * _offset;
+
+            var direction = _target.position - _cachedTransform.position;
             _cachedTransform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }
     }
