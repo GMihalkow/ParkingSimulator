@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0d6467af8b6d44183966034eb5ec5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 50
+  _rotationSpeed: 100
   _target: {fileID: 1562612727}
   _offset: {x: 0, y: 3, z: -5}
 --- !u!4 &1562612727 stripped
@@ -1619,8 +1619,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756085229}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.3384256, y: -0.6227946, z: -10.284165}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.3384256, y: -0.6227946, z: -10.284164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1705,3 +1705,72 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2129976028}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1475517494005080142
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -69.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475517492659931341, guid: 596f634eddc56eb47a33e84b5f14b141,
+        type: 3}
+      propertyPath: m_Name
+      value: ParkingSlot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 596f634eddc56eb47a33e84b5f14b141, type: 3}
