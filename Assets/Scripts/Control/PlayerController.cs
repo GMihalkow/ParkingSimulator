@@ -80,13 +80,11 @@ namespace ParkingSimultaor.Control
             {
                 _fellOverAt = Time.time;
             }
-            else if (_fellOverAt > 0 && Time.time -_fellOverAt > _fallOverResetTimeout)
+            else if (_fellOverAt > 0 && Time.time - _fellOverAt > _fallOverResetTimeout)
             {
                 _fellOverAt = -1;
 
-                var zDiff = Quaternion.FromToRotation(transform.up, Vector3.up);
-
-                transform.rotation *= zDiff;
+                transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
             }
         }
     }
