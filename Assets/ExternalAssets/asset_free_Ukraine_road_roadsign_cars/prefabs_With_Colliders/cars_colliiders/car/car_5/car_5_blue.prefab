@@ -825,6 +825,7 @@ MonoBehaviour:
   _brakeDuration: 0.5
   _brakeMaxForce: 1000
   _fallOverResetTimeout: 1
+  _wheelsScanner: {fileID: 1832355664734314608}
 --- !u!114 &1832355664734314608
 MonoBehaviour:
   m_ObjectHideFlags: 0

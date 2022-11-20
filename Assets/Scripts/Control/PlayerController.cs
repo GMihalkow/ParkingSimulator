@@ -1,5 +1,6 @@
 namespace ParkingSimultaor.Control
 {
+    using Dreamteck.Car;
     using UnityEngine;
 
     public class PlayerController : MonoBehaviour
@@ -17,6 +18,7 @@ namespace ParkingSimultaor.Control
         [SerializeField] private float _brakeDuration;
         [SerializeField] private float _brakeMaxForce = 50f;
         [SerializeField] private float _fallOverResetTimeout = 2f;
+        [SerializeField] private WheelsScanner _wheelsScanner;
 
         private float _brakeStartTime;
         private Vector2 _input;
@@ -25,6 +27,11 @@ namespace ParkingSimultaor.Control
         private void Update()
         {
             _input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+            if (Input.GetKeyDown(KeyCode.E) && _wheelsScanner.IsScanSuccessful())
+            {
+                Debug.Log("PARKING SUCCESSFUL!");
+            }
 
             HandleBrakes();
             ValidatePosition();

@@ -55,6 +55,35 @@
             }
         }
 
+        public bool IsScanSuccessful()
+        {
+            var areaTransform = default(Transform);
+            var count = 0;
+
+            foreach (var pair in _wheelAreaPairs)
+            {
+                if (pair == null) return false;
+
+                if (pair.areaTransform != null)
+                {
+                    count++;
+                }
+
+                if (areaTransform == null)
+                {
+                    areaTransform = pair.areaTransform;
+                    continue;
+                }
+
+                if (areaTransform != null && pair.areaTransform != areaTransform)
+                {
+                    return false;
+                }
+            }
+
+            return count == _wheelAreaPairs.Length;
+        }
+
         private int FindFreeIndex()
         {
             for (int index = 0; index < _wheelAreaPairs.Length; index++)
