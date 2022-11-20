@@ -905,26 +905,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.x
-      value: 0.015334721
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.z
-      value: 0.036747206
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Center.x
-      value: 0.00012979984
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Center.z
-      value: 0.00010860384
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b5728c9a8fc364cbfbaadcdeb1af64, type: 3}
 --- !u!1 &998290435
@@ -1654,7 +1634,7 @@ PrefabInstance:
     - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
         type: 3}
@@ -1664,7 +1644,7 @@ PrefabInstance:
     - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
         type: 3}
@@ -1679,7 +1659,7 @@ PrefabInstance:
     - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 1475517492659931338, guid: 596f634eddc56eb47a33e84b5f14b141,
         type: 3}
@@ -1691,5 +1671,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParkingSlot
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8635009226387257718, guid: 596f634eddc56eb47a33e84b5f14b141, type: 3}
+    - {fileID: 4706580070008128549, guid: 596f634eddc56eb47a33e84b5f14b141, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 596f634eddc56eb47a33e84b5f14b141, type: 3}
