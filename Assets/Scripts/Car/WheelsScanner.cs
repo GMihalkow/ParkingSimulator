@@ -1,4 +1,4 @@
-﻿namespace Dreamteck.Car
+﻿namespace ParkingSimultaor.Car
 {
     using UnityEngine;
 

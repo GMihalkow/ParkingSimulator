@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1475517492659931338}
-  - component: {fileID: 8635009226387257718}
+  - component: {fileID: 2483757629965886632}
   m_Layer: 0
   m_Name: ParkingSlot
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8635009226387257718
+--- !u!114 &2483757629965886632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,10 +43,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1475517492659931341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80ec16d033d71b544b276d20b7325cb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 77bc8167690197649bf95b8de2fe3b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _areaCollider: {fileID: 1475517493083185197}
+  _type: 1
+  _helpImage: {fileID: 2800000, guid: 8e8223eeda8ba6644afedb3f69483d80, type: 3}
 --- !u!1 &1475517493083185199
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +60,6 @@ GameObject:
   - component: {fileID: 1475517493083185195}
   - component: {fileID: 1475517493083185194}
   - component: {fileID: 1475517493083185197}
-  - component: {fileID: 4706580070008128549}
   m_Layer: 6
   m_Name: Area
   m_TagString: Untagged
@@ -145,21 +145,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4706580070008128549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475517493083185199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5869a5af38c5c304499df333a3a0bb36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tiresLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1001 &3706808077462070909
 PrefabInstance:
   m_ObjectHideFlags: 0

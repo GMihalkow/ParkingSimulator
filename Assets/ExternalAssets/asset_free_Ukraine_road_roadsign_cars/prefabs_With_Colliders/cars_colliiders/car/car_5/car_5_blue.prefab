@@ -785,7 +785,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &7506314731835723150
 BoxCollider:
@@ -812,6 +812,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61334c4b572b1eb4281e3efe72aedff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _carController:
+    _maxTurnAngle: 30
+    _maxTorque: 500
+    _backLeftWheel: {fileID: 5812044886078207924}
+    _backRightWheel: {fileID: 6556772005218470040}
+    _frontLeftWheel: {fileID: 1472678341078364655}
+    _frontRightWheel: {fileID: 2413637668169163666}
+    _backLeftTransform: {fileID: 209349735691240967}
+    _backRightTransform: {fileID: 5714314383221130993}
+    _frontLeftTransform: {fileID: 5398957700218478034}
+    _frontRightTransform: {fileID: 8885510080868031040}
+    _brakeDuration: 0.1
+    _brakeMaxForce: 2000
+    _fallOverResetTimeout: 2
+    _wheelsScanner: {fileID: 1832355664734314608}
   _maxTurnAngle: 30
   _maxTorque: 500
   _backLeftWheel: {fileID: 5812044886078207924}
@@ -822,8 +837,8 @@ MonoBehaviour:
   _backRightTransform: {fileID: 5714314383221130993}
   _frontLeftTransform: {fileID: 5398957700218478034}
   _frontRightTransform: {fileID: 8885510080868031040}
-  _brakeDuration: 0.5
-  _brakeMaxForce: 1000
+  _brakeDuration: 0.1
+  _brakeMaxForce: 2000
   _fallOverResetTimeout: 1
   _wheelsScanner: {fileID: 1832355664734314608}
 --- !u!114 &1832355664734314608
