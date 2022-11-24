@@ -13,8 +13,6 @@
 
         private void Awake() => _cachedTransform = transform;
 
-        private void Start() => Cursor.lockState = CursorLockMode.Locked;
-
         private void Update()
         {
             var xInput = Input.GetAxis("Mouse X");
