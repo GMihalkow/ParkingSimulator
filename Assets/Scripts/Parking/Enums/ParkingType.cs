@@ -1,6 +1,6 @@
 ﻿namespace ParkingSimultaor.Parking.Enums
 {
-    public enum Type
+    public enum ParkingType
     {
         Horizontal = 0,
         Vertical = 1,

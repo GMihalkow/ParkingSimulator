@@ -61,13 +61,12 @@
     <Compile Include="Assets\Scripts\Parking\Indicator.cs" />
     <Compile Include="Assets\Scripts\Car\CarController.cs" />
     <Compile Include="Assets\Scripts\Control\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Parking\ParkingHelper.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\Parking\Enums\Type.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Car\WheelAreaPair.cs" />
     <Compile Include="Assets\Scripts\Control\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Utilities\ObjectScanner.cs" />
+    <Compile Include="Assets\Scripts\Parking\Enums\ParkingType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

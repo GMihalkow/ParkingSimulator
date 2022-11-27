@@ -832,6 +832,8 @@ MonoBehaviour:
   _mainMenuScene: MenuScene
   _parkingSlotsScanner: {fileID: 1189057791928315628}
   _marker: {fileID: 0}
+  _updateMarkerFrequency: 0.02
+  _helpersScreen: {fileID: 0}
 --- !u!114 &1832355664734314608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,7 +872,7 @@ MonoBehaviour:
   _targetLayers:
     serializedVersion: 2
     m_Bits: 64
-  _scanRadius: 5
+  _scanRadius: 20
   _drawGizmos: 1
   _scanFrequency: 0.02
   _maxResultsCount: 3
