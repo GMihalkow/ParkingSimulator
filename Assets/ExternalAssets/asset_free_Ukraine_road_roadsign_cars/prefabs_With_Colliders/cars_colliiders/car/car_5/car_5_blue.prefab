@@ -746,6 +746,7 @@ GameObject:
   - component: {fileID: 7506314731835723150}
   - component: {fileID: 3540978233083025549}
   - component: {fileID: 1832355664734314608}
+  - component: {fileID: 1189057791928315628}
   m_Layer: 0
   m_Name: car_5_blue
   m_TagString: Untagged
@@ -827,20 +828,10 @@ MonoBehaviour:
     _brakeMaxForce: 2000
     _fallOverResetTimeout: 2
     _wheelsScanner: {fileID: 1832355664734314608}
-  _maxTurnAngle: 30
-  _maxTorque: 500
-  _backLeftWheel: {fileID: 5812044886078207924}
-  _backRightWheel: {fileID: 6556772005218470040}
-  _frontLeftWheel: {fileID: 1472678341078364655}
-  _frontRightWheel: {fileID: 2413637668169163666}
-  _backLeftTransform: {fileID: 209349735691240967}
-  _backRightTransform: {fileID: 5714314383221130993}
-  _frontLeftTransform: {fileID: 5398957700218478034}
-  _frontRightTransform: {fileID: 8885510080868031040}
-  _brakeDuration: 0.1
-  _brakeMaxForce: 2000
-  _fallOverResetTimeout: 1
-  _wheelsScanner: {fileID: 1832355664734314608}
+  _pauseMenu: {fileID: 0}
+  _mainMenuScene: MenuScene
+  _parkingSlotsScanner: {fileID: 1189057791928315628}
+  _marker: {fileID: 0}
 --- !u!114 &1832355664734314608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,3 +855,22 @@ MonoBehaviour:
     m_Bits: 64
   _drawGizmos: 0
   _maxRayLength: 1
+--- !u!114 &1189057791928315628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934234302468195902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef227e3415bc814984274382aba9b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  _scanRadius: 5
+  _drawGizmos: 1
+  _scanFrequency: 0.02
+  _maxResultsCount: 3
