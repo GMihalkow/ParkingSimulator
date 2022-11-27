@@ -1,7 +1,7 @@
 namespace ParkingSimultaor.Control
 {
     using ParkingSimultaor.Car;
-    using ParkingSimultaor.Scripts.UI;
+    using ParkingSimultaor.UI;
     using ParkingSimultaor.Utilities;
     using UnityEngine;
     using UnityEngine.SceneManagement;
@@ -15,6 +15,9 @@ namespace ParkingSimultaor.Control
         [SerializeField] private ObjectScanner _parkingSlotsScanner;
         [SerializeField] private Image _marker;
         [SerializeField] private float _updateMarkerFrequency = 0.02f;
+        [SerializeField] private GameObject _helpersScreen;
+        [SerializeField] private Image _invalidParkingPositionImage;
+        [SerializeField] private WinMenu _winScreen;
 
         private float _lastMarkerUpdate = -1;
         private Vector2 _input;
@@ -25,26 +28,52 @@ namespace ParkingSimultaor.Control
         {
             _mainCamera = Camera.main;
             _carController.Initialize(transform);
+            
             _pauseMenu.onResumeBtnClick += OnPauseMenuResumeBtnClick;
             _pauseMenu.onExitBtnClick += OnPauseMenuExitBtnClick;
+
+            _winScreen.onRestartBtnClick += OnWinMenuRestartBtnClick;
+            _winScreen.onExitBtnClick += OnWinMenuExitBtnClick;
         }
 
         private void Start() => Cursor.lockState = CursorLockMode.Locked;
 
         private void Update()
         {
+            if (_winScreen.gameObject.activeSelf) return;
+
             _input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
             _carController.OnUpdate(ref _input);
 
-            if (Input.GetKeyDown(KeyCode.E) && _carController.IsScanSuccessful)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("PARKING SUCCESSFUL!");
+                if (_carController.IsScanSuccessful)
+                {
+                    ToggleScreen(_winScreen.gameObject, true);
+                    return;
+                }
+                else
+                {
+                    _invalidParkingPositionImage.gameObject.SetActive(true);
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                _invalidParkingPositionImage.gameObject.SetActive(false);
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                OnPauseMenuResumeBtnClick();
+                if (_helpersScreen.gameObject.activeSelf)
+                {
+                    ToggleScreen(_helpersScreen, false);
+                }
+                else
+                {
+                    OnPauseMenuResumeBtnClick();
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.Q))
@@ -60,6 +89,11 @@ namespace ParkingSimultaor.Control
             if (_showHelperMarkers && (_updateMarkerFrequency < 0 || (Time.time - _lastMarkerUpdate > _updateMarkerFrequency)))
             {
                 PlaceMarker();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Tab) && !_pauseMenu.gameObject.activeSelf)
+            {
+                ToggleScreen(_helpersScreen, !_helpersScreen.gameObject.activeSelf);
             }
         }
 
@@ -111,12 +145,14 @@ namespace ParkingSimultaor.Control
             _lastMarkerUpdate = Time.time;
         }
 
-        private void OnPauseMenuResumeBtnClick()
-        {
-            _pauseMenu.gameObject.SetActive(!_pauseMenu.gameObject.activeSelf);
+        private void OnPauseMenuResumeBtnClick() => ToggleScreen(_pauseMenu.gameObject, !_pauseMenu.gameObject.activeSelf);
 
-            Time.timeScale = _pauseMenu.gameObject.activeSelf ? 0f : 1f;
-            Cursor.lockState = _pauseMenu.gameObject.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+        private void ToggleScreen(GameObject screen, bool active)
+        {
+            screen.gameObject.SetActive(active);
+
+            Time.timeScale = screen.gameObject.activeSelf ? 0f : 1f;
+            Cursor.lockState = screen.gameObject.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
         }
 
         private void OnPauseMenuExitBtnClick()
@@ -124,6 +160,18 @@ namespace ParkingSimultaor.Control
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(_mainMenuScene, LoadSceneMode.Single);
+        }
+
+        private void OnWinMenuRestartBtnClick()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1f;
+        }
+
+        private void OnWinMenuExitBtnClick()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 1f;
         }
     }
 }

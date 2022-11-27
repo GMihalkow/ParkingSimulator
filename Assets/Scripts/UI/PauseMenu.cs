@@ -1,4 +1,4 @@
-﻿namespace ParkingSimultaor.Scripts.UI
+﻿namespace ParkingSimultaor.UI
 {
     using System;
     using UnityEngine;

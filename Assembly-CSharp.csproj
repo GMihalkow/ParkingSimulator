@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Control\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Utilities\ObjectScanner.cs" />
     <Compile Include="Assets\Scripts\Parking\Enums\ParkingType.cs" />
+    <Compile Include="Assets\Scripts\UI\WinMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
