@@ -1,8 +1,8 @@
-namespace ParkingSimultaor.Control
+namespace ParkingSimulator.Control
 {
-    using ParkingSimultaor.Car;
-    using ParkingSimultaor.UI;
-    using ParkingSimultaor.Utilities;
+    using ParkingSimulator.Car;
+    using ParkingSimulator.UI;
+    using ParkingSimulator.Utilities;
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using UnityEngine.UI;

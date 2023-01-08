@@ -1,4 +1,4 @@
-﻿namespace ParkingSimultaor.Parking.Enums
+﻿namespace ParkingSimulator.Parking.Enums
 {
     public enum ParkingType
     {

@@ -1,4 +1,4 @@
-﻿namespace ParkingSimultaor.Utilities
+﻿namespace ParkingSimulator.Utilities
 {
     using UnityEngine;
 
@@ -25,11 +25,11 @@
             }
         }
 
-        private int Scan()
+        private void Scan()
         {
             _lastScan = Time.time;
 
-            return Physics.OverlapSphereNonAlloc(transform.position, _scanRadius, _results, _targetLayers);
+            Physics.OverlapSphereNonAlloc(transform.position, _scanRadius, _results, _targetLayers);
         }
 
         private void OnDrawGizmos()

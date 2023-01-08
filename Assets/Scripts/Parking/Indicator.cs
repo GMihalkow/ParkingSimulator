@@ -1,4 +1,4 @@
-﻿namespace ParkingSimultaor.Parking
+﻿namespace ParkingSimulator.Parking
 {
     using UnityEngine;
 
